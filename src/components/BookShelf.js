@@ -5,7 +5,7 @@ import Book from './Book'
 
 class BookShelf extends Component {
     renderBooks = () => {
-        return this.props.books.map((book, index) => <li><Book key={index}/></li>)
+        return this.props.books.map(book => <li key={book.id}><Book  data={book}/></li>)
     }
 
     render() {

@@ -1,8 +1,8 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-import HomePage from './pages/HomePage'
+import LibraryPage from './pages/LibraryPage'
 import SearchPage from './pages/SearchPage'
 
 class BooksApp extends React.Component {
@@ -13,7 +13,21 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    showSearchPage: false,
+    allBooks: [],
+    loading: true,
+  }
+
+  // TODO: create a loading component
+  // TODO: include pretty
+
+  componentDidMount() {
+    BooksAPI.getAll().then(allBooks =>
+      this.setState({
+        allBooks,
+        loading: false,
+      })
+    )
   }
 
   handleOpenSearch = () => this.setState({ showSearchPage: true })
@@ -23,18 +37,12 @@ class BooksApp extends React.Component {
 
   render() {
 
-    const fakeBookData = {
-      currentlyReading: [1, 2, 3],
-      wantToRead: [1, 2],
-      read: [1, 2, 3, 4, 4],
-    }
-
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
+        {this.state.showSearchPage || this.state.loading ? (
           <SearchPage onCloseSearch={this.handleCloseSearch}/>          
         ) : (
-          <HomePage library={fakeBookData} onOpenSearch={this.handleOpenSearch}/>
+          <LibraryPage allBooks={this.state.allBooks} onOpenSearch={this.handleOpenSearch}/>
         )}
       </div>
     )
