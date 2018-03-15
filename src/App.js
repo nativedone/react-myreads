@@ -2,7 +2,7 @@ import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-import Book from './components/Book'
+import BookShelf from './components/BookShelf'
 
 class BooksApp extends React.Component {
   state = {
@@ -15,7 +15,15 @@ class BooksApp extends React.Component {
     showSearchPage: false
   }
 
+
   render() {
+
+    const fakeBookData = {
+      currentlyReading: [1, 2, 3],
+      wantToRead: [1, 2],
+      read: [1, 2, 3, 4, 4],
+    }
+
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -45,50 +53,9 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      <li>
-                        <Book />
-                      </li>
-                      <li>
-                      <Book />
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      <li>
-                      <Book />
-                      </li>
-                      <li>
-                      <Book />
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      <li>
-                      <Book />
-                      </li>
-                      <li>
-                      <Book />
-                      </li>
-                      <li>
-                      <Book />
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
+              <BookShelf title='Currently Reading' books={fakeBookData.currentlyReading} />
+              <BookShelf title='Want to Read' books={fakeBookData.wantToRead} />
+              <BookShelf title='Read' books={fakeBookData.read} />
             </div>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
