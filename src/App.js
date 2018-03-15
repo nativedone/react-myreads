@@ -2,7 +2,7 @@ import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-import BookShelf from './components/BookShelf'
+import HomePage from './pages/HomePage'
 
 class BooksApp extends React.Component {
   state = {
@@ -14,6 +14,8 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false
   }
+
+  handleOpenSearch = () => this.setState({ showSearchPage: true })
 
 
   render() {
@@ -48,19 +50,7 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <BookShelf title='Currently Reading' books={fakeBookData.currentlyReading} />
-              <BookShelf title='Want to Read' books={fakeBookData.wantToRead} />
-              <BookShelf title='Read' books={fakeBookData.read} />
-            </div>
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-            </div>
-          </div>
+          <HomePage library={fakeBookData} onOpenSearch={this.handleOpenSearch}/>
         )}
       </div>
     )
