@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import BookShelf from "./../components/BookShelf";
+import OpenSearch from "./../components/OpenSearch";
 
 class LibraryPage extends Component {
   filterBooksbyShelf(shelfName) {
@@ -27,9 +28,7 @@ class LibraryPage extends Component {
           />
           <BookShelf title="Read" books={this.filterBooksbyShelf("read")} />
         </div>
-        <div className="open-search">
-          <a onClick={() => onOpenSearch()}>Add a book</a>
-        </div>
+        <OpenSearch onClick={onOpenSearch} />
       </div>
     );
   }
