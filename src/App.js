@@ -1,9 +1,9 @@
-import React from 'react'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
+import React from "react";
+import * as BooksAPI from "./BooksAPI";
+import "./App.css";
 
-import LibraryPage from './pages/LibraryPage'
-import SearchPage from './pages/SearchPage'
+import LibraryPage from "./pages/LibraryPage";
+import SearchPage from "./pages/SearchPage";
 
 class BooksApp extends React.Component {
   state = {
@@ -15,38 +15,38 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false,
     allBooks: [],
-    loading: true,
-  }
+    loading: true
+  };
 
   // TODO: create a loading component
-  // TODO: include pretty
 
   componentDidMount() {
     BooksAPI.getAll().then(allBooks =>
       this.setState({
         allBooks,
-        loading: false,
+        loading: false
       })
-    )
+    );
   }
 
-  handleOpenSearch = () => this.setState({ showSearchPage: true })
-  
-  handleCloseSearch = () => this.setState({ showSearchPage: false })
+  handleOpenSearch = () => this.setState({ showSearchPage: true });
 
+  handleCloseSearch = () => this.setState({ showSearchPage: false });
 
   render() {
-
     return (
       <div className="app">
         {this.state.showSearchPage || this.state.loading ? (
-          <SearchPage onCloseSearch={this.handleCloseSearch}/>          
+          <SearchPage onCloseSearch={this.handleCloseSearch} />
         ) : (
-          <LibraryPage allBooks={this.state.allBooks} onOpenSearch={this.handleOpenSearch}/>
+          <LibraryPage
+            allBooks={this.state.allBooks}
+            onOpenSearch={this.handleOpenSearch}
+          />
         )}
       </div>
-    )
+    );
   }
 }
 
-export default BooksApp
+export default BooksApp;
