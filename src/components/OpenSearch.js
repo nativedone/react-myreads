@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const OpenSearch = ({ onClick }) => (
-  <div className="open-search">
-    <a onClick={() => onClick()}>Add a book</a>
-  </div>
+  <Link to="/search">
+    <div className="open-search">Add a book</div>
+  </Link>
 );
 
 export default OpenSearch;

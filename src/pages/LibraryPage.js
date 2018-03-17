@@ -8,27 +8,36 @@ class LibraryPage extends Component {
     return this.props.allBooks.filter(book => book.shelf === shelfName);
   }
 
+  renderShelves = () => {
+    const { loadding } = this.props;
+
+    return loadding ? (
+      <div>Loading....</div>
+    ) : (
+      <div className="list-books-content">
+        <BookShelf
+          title="Currently Reading"
+          books={this.filterBooksbyShelf("currentlyReading")}
+        />
+        <BookShelf
+          title="Want to Read"
+          books={this.filterBooksbyShelf("wantToRead")}
+        />
+        <BookShelf title="Read" books={this.filterBooksbyShelf("read")} />
+      </div>
+    );
+  };
+
   render() {
     console.log("this.props.allBooks", this.props.allBooks);
-    const { onOpenSearch } = this.props;
 
     return (
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <div className="list-books-content">
-          <BookShelf
-            title="Currently Reading"
-            books={this.filterBooksbyShelf("currentlyReading")}
-          />
-          <BookShelf
-            title="Want to Read"
-            books={this.filterBooksbyShelf("wantToRead")}
-          />
-          <BookShelf title="Read" books={this.filterBooksbyShelf("read")} />
-        </div>
-        <OpenSearch onClick={onOpenSearch} />
+        {this.renderShelves()}
+        <OpenSearch />
       </div>
     );
   }

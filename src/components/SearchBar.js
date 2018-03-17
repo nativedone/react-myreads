@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 /*
     NOTES: You can find these search terms here:
@@ -9,9 +10,9 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="search-books-bar">
-        <a className="close-search" onClick={() => this.props.onClose()}>
-          Close
-        </a>
+        <Link to="/">
+          <div className="close-search">Close</div>
+        </Link>
         <div className="search-books-input-wrapper">
           <input type="text" placeholder="Search by title or author" />
         </div>
