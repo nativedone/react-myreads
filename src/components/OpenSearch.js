@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const OpenSearch = ({ onClick }) => (
+const OpenSearch = () => (
   <Link to="/search">
     <div className="open-search">Add a book</div>
   </Link>

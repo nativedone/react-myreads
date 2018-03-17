@@ -6,7 +6,7 @@ class SearchPage extends Component {
   render() {
     return (
       <div className="search-books">
-        <SearchBar onClose={this.props.onCloseSearch} />
+        <SearchBar />
         <div className="search-books-results">
           <ol className="books-grid" />
         </div>
