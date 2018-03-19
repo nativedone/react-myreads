@@ -9,9 +9,9 @@ class LibraryPage extends Component {
   }
 
   renderShelves = () => {
-    const { loadding } = this.props;
+    const { loading } = this.props;
 
-    return loadding ? (
+    return loading ? (
       <div>Loading....</div>
     ) : (
       <div className="list-books-content">
@@ -30,7 +30,7 @@ class LibraryPage extends Component {
 
   render() {
     // TODO: remove console
-    console.log("this.props.allBooks", this.props.allBooks);
+    console.log("this.props", this.props);
 
     return (
       <div className="list-books">
