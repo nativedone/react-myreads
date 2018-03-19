@@ -1,9 +1,11 @@
 import React from "react";
 import Spinner from "react-spinner-material";
 
-const Loading = ({ appState }) => (
+import ShowError from "./ShowError";
+
+const Loading = ({ appStatus }) => (
   <div className="loading-wrapper">
-    {appState === "loading" ? (
+    {appStatus.value === "loading" ? (
       <Spinner
         size={120}
         spinnerColor={"#F7BB41"}
@@ -11,7 +13,7 @@ const Loading = ({ appState }) => (
         visible={true}
       />
     ) : (
-      <div className="error-message">Something went wrong</div>
+      <ShowError message={appStatus.message} />
     )}
   </div>
 );

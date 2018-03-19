@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Book from "./Book";
+import NoBook from "./NoBook";
 
 class BookShelf extends Component {
   renderBooks = () => {
@@ -16,7 +17,11 @@ class BookShelf extends Component {
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
-          <ol className="books-grid">{this.renderBooks()}</ol>
+          {this.props.books.length > 0 ? (
+            <ol className="books-grid">{this.renderBooks()}</ol>
+          ) : (
+            <NoBook />
+          )}
         </div>
       </div>
     );

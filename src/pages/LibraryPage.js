@@ -10,9 +10,11 @@ class LibraryPage extends Component {
   }
 
   renderShelves = () => {
-    const { appState } = this.props;
+    const { appStatus } = this.props;
 
-    return appState === "success" ? (
+    console.log("appStatus", appStatus);
+
+    return appStatus.value === "success" ? (
       <div className="list-books-content">
         <BookShelf
           title="Currently Reading"
@@ -25,7 +27,7 @@ class LibraryPage extends Component {
         <BookShelf title="Read" books={this.filterBooksbyShelf("read")} />
       </div>
     ) : (
-      <Loading appState={appState} />
+      <Loading appStatus={appStatus} />
     );
   };
 

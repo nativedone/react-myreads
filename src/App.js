@@ -10,25 +10,35 @@ import NotFoundPage from "./pages/NotFoundPage";
 class BooksApp extends React.Component {
   state = {
     allBooks: [],
-    appState: "loading" // or 'success' or 'error'
+    appStatus: {
+      value: "loading", // or "success" or "error"
+      message: ""
+    }
   };
 
   componentDidMount() {
     BooksAPI.getAll()
       .then(allBooks =>
         this.setState({
-          allBooks,
-          appState: "success"
+          allBooks: allBooks || [],
+          appStatus: {
+            ...this.state.appStatus,
+            value: "success"
+          }
         })
       )
       .catch(rejection =>
         this.setState({
-          appState: "error"
+          appStatus: {
+            value: "error",
+            message: rejection.toString()
+          }
         })
       );
   }
 
   render() {
+    console.log("appStatus", this.state.appStatus);
     return (
       <div className="app">
         <Switch>
