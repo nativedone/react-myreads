@@ -29,6 +29,7 @@ class LibraryPage extends Component {
   };
 
   render() {
+    // TODO: remove console
     console.log("this.props.allBooks", this.props.allBooks);
 
     return (

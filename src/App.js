@@ -5,6 +5,7 @@ import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import LibraryPage from "./pages/LibraryPage";
 import SearchPage from "./pages/SearchPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 class BooksApp extends React.Component {
   state = {
@@ -31,7 +32,7 @@ class BooksApp extends React.Component {
             {() => <LibraryPage {...this.state} />}
           </Route>
           <Route path="/search" component={SearchPage} />
-          {/*<Route component={NoMatch} />*/}
+          <Route component={NotFoundPage} />
         </Switch>
       </div>
     );
