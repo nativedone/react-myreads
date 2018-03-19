@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import BookShelf from "./../components/BookShelf";
 import OpenSearch from "./../components/OpenSearch";
+import Loading from "./../components/Loading";
 
 class LibraryPage extends Component {
   filterBooksbyShelf(shelfName) {
@@ -9,11 +10,9 @@ class LibraryPage extends Component {
   }
 
   renderShelves = () => {
-    const { loading } = this.props;
+    const { appState } = this.props;
 
-    return loading ? (
-      <div>Loading....</div>
-    ) : (
+    return appState === "success" ? (
       <div className="list-books-content">
         <BookShelf
           title="Currently Reading"
@@ -25,6 +24,8 @@ class LibraryPage extends Component {
         />
         <BookShelf title="Read" books={this.filterBooksbyShelf("read")} />
       </div>
+    ) : (
+      <Loading appState={appState} />
     );
   };
 

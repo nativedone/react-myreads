@@ -1,4 +1,4 @@
-html, body, .root {
+html, body, #root {
   height: 100%;
 }
 body {
@@ -6,9 +6,31 @@ body {
 }
 body, .app {
   background: white;
+  height: 100%;
+}
+
+/* shared */
+
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error-message {
+  background: rgb(143, 137, 137);
+  padding: 20px;
+  border-radius: 7px;
+  font-size: 2.25em;
 }
 
 /* main page */
+
+.list-books {
+  height: 100%;
+}
 
 .list-books-title {
   padding: 10px 0;

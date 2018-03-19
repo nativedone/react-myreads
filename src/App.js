@@ -10,18 +10,22 @@ import NotFoundPage from "./pages/NotFoundPage";
 class BooksApp extends React.Component {
   state = {
     allBooks: [],
-    loading: true
+    appState: "loading" // or 'success' or 'error'
   };
 
-  // TODO: create a loading component
-
   componentDidMount() {
-    BooksAPI.getAll().then(allBooks =>
-      this.setState({
-        allBooks,
-        loading: false
-      })
-    );
+    BooksAPI.getAll()
+      .then(allBooks =>
+        this.setState({
+          allBooks,
+          appState: "success"
+        })
+      )
+      .catch(rejection =>
+        this.setState({
+          appState: "error"
+        })
+      );
   }
 
   render() {
