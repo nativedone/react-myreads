@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import FallbackComponent from "./FallbackComponent";
+import FallbackComponent from './FallbackComponent'
 
 const ShowError = ({ message }) => (
   <FallbackComponent message={message}>
@@ -12,10 +12,10 @@ const ShowError = ({ message }) => (
       </div>
     )}
   </FallbackComponent>
-);
+)
 
 ShowError.propTypes = {
-  message: PropTypes.string
-};
+  message: PropTypes.string,
+}
 
-export default ShowError;
+export default ShowError

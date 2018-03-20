@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import FallbackComponent from "./FallbackComponent";
+import FallbackComponent from './FallbackComponent'
 
 const NoBook = () => (
-  <FallbackComponent message={"No book to show!"}>
+  <FallbackComponent message={'No book to show!'}>
     {(theme, message) => (
       <div className={theme.light}>
         <h1>{message}</h1>
@@ -11,6 +11,6 @@ const NoBook = () => (
       </div>
     )}
   </FallbackComponent>
-);
+)
 
-export default NoBook;
+export default NoBook

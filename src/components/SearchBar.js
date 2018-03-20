@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 /*
     NOTES: You can find these search terms here:
@@ -17,8 +17,8 @@ class SearchBar extends Component {
           <input type="text" placeholder="Search by title or author" />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default SearchBar;
+export default SearchBar

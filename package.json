@@ -24,5 +24,18 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": "*.test.js",
+        "options": {
+          "semi": true
+        }
+      }
+    ]
   }
 }

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import SearchBar from "./../components/SearchBar";
+import SearchBar from './../components/SearchBar'
 
 class SearchPage extends Component {
   render() {
@@ -11,8 +11,8 @@ class SearchPage extends Component {
           <ol className="books-grid" />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default SearchPage;
+export default SearchPage

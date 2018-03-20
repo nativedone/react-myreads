@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import BookFactory from "./BookFactory";
-import BookShelfChanger from "./BookShelfChanger";
+import BookFactory from './BookFactory'
+import BookShelfChanger from './BookShelfChanger'
 
 class Book extends Component {
   render() {
-    const { data: { title, authors, imageLinks: { thumbnail } } } = this.props;
+    const { data: { title, authors, imageLinks: { thumbnail } } } = this.props
 
     return (
       <BookFactory title={title} authors={authors} thumbnail={thumbnail}>
         <BookShelfChanger />
       </BookFactory>
-    );
+    )
   }
 }
 
-export default Book;
+export default Book

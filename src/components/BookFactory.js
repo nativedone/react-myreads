@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class BookFactory extends Component {
   render() {
-    const { title, authors, thumbnail, children } = this.props;
+    const { title, authors, thumbnail, children } = this.props
 
     return (
       <div className="book">
@@ -12,7 +12,7 @@ class BookFactory extends Component {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url(${thumbnail})`
+              backgroundImage: `url(${thumbnail})`,
             }}
           />
           {children}
@@ -20,8 +20,8 @@ class BookFactory extends Component {
         <div className="book-title">{title}</div>
         <div className="book-authors">{authors}</div>
       </div>
-    );
+    )
   }
 }
 
-export default BookFactory;
+export default BookFactory

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class BookShelfChanger extends Component {
   render() {
@@ -14,8 +14,8 @@ class BookShelfChanger extends Component {
           <option value="none">None</option>
         </select>
       </div>
-    );
+    )
   }
 }
 
-export default BookShelfChanger;
+export default BookShelfChanger

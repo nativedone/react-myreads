@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import Book from "./Book";
-import NoBook from "./NoBook";
+import Book from './Book'
+import NoBook from './NoBook'
 
 class BookShelf extends Component {
   renderBooks = () => {
@@ -9,8 +9,8 @@ class BookShelf extends Component {
       <li key={book.id}>
         <Book data={book} />
       </li>
-    ));
-  };
+    ))
+  }
 
   render() {
     return (
@@ -24,8 +24,8 @@ class BookShelf extends Component {
           )}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default BookShelf;
+export default BookShelf
