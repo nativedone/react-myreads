@@ -3,11 +3,13 @@ import React from "react";
 import FallbackComponent from "./FallbackComponent";
 
 const NoBook = () => (
-  <FallbackComponent
-    className="fallback-book"
-    message="Verify if you're logged in"
-  >
-    {() => <h1>No book to show!</h1>}
+  <FallbackComponent message={"No book to show!"}>
+    {(theme, message) => (
+      <div className={theme.light}>
+        <h1>{message}</h1>
+        <h2>Verify if you're logged in</h2>
+      </div>
+    )}
   </FallbackComponent>
 );
 

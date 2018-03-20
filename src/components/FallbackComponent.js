@@ -1,17 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-const FallbackComponent = ({ message, className, children }) => (
-  <div className={`fallback-component ${className}`}>
-    {children && children()}
-    {message && <h2>{message}</h2>}
-  </div>
+const CSS_THEME = {
+  error: "message-error",
+  light: "message-light"
+};
+
+const FallbackComponent = ({ message, children }) => (
+  <Fragment>{children && children(CSS_THEME, message)}</Fragment>
 );
 
 FallbackComponent.propTypes = {
   message: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.func
+  children: PropTypes.func.isRequired
 };
 
 FallbackComponent.defaultProps = {

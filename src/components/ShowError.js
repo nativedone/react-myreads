@@ -4,17 +4,18 @@ import PropTypes from "prop-types";
 import FallbackComponent from "./FallbackComponent";
 
 const ShowError = ({ message }) => (
-  <FallbackComponent className="error-message" message={message}>
-    {() => <h1>Verify your connection or try again later</h1>}
+  <FallbackComponent message={message}>
+    {(theme, message) => (
+      <div className={theme.error}>
+        <h1>{message}</h1>
+        <h2>Verify your connection or try again later</h2>
+      </div>
+    )}
   </FallbackComponent>
 );
 
 ShowError.propTypes = {
   message: PropTypes.string
-};
-
-ShowError.defaultProps = {
-  message: "Something went wrong ¯\\_(ツ)_/¯"
 };
 
 export default ShowError;

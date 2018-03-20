@@ -11,18 +11,6 @@ body, .app {
 
 /* main page */
 
-.fallback-component {
-  background: #ccc;
-  text-align: center;
-  margin: 10px 35% 10px 35%;
-  align-self: center;
-}
-
-.fallback-component h2 {
-  font-weight: 400;
-  color: white;
-}
-
 .list-books {
   height: 100%;
 }
@@ -199,9 +187,14 @@ body, .app {
   height: 100%;
 }
 
-.error-message {
-  background: rgb(143, 137, 137);
+.message-error {
+  background: red;
   padding: 20px;
   border-radius: 7px;
   font-size: 1em;
+  color: white;
+}
+
+.message-light {
+  color: #ccc;
 }
