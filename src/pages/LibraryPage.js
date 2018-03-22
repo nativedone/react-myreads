@@ -6,7 +6,10 @@ import Loading from './../components/Loading'
 
 class LibraryPage extends Component {
   filterBooksbyShelf(shelfName) {
-    return this.props.allBooks.filter(book => book.shelf === shelfName)
+    const { allBooks } = this.props
+    return Object.keys(allBooks)
+      .filter(id => allBooks[id].shelf === shelfName)
+      .map(id => allBooks[id])
   }
 
   renderShelves = () => {
@@ -19,12 +22,18 @@ class LibraryPage extends Component {
         <BookShelf
           title="Currently Reading"
           books={this.filterBooksbyShelf('currentlyReading')}
+          onChangeShelf={this.props.onChangeShelf}
         />
         <BookShelf
           title="Want to Read"
           books={this.filterBooksbyShelf('wantToRead')}
+          onChangeShelf={this.props.onChangeShelf}
         />
-        <BookShelf title="Read" books={this.filterBooksbyShelf('read')} />
+        <BookShelf
+          title="Read"
+          books={this.filterBooksbyShelf('read')}
+          onChangeShelf={this.props.onChangeShelf}
+        />
       </div>
     ) : (
       <Loading appStatus={appStatus} />

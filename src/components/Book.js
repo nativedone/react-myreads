@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 
 import BookFactory from './BookFactory'
-import BookShelfChanger from './BookShelfChanger'
+import ShelfChanger from './ShelfChanger'
 
 class Book extends Component {
   render() {
-    const { data: { title, authors, imageLinks: { thumbnail } } } = this.props
+    const {
+      data: { title, authors, imageLinks: { thumbnail }, shelf, id },
+    } = this.props
 
     return (
       <BookFactory title={title} authors={authors} thumbnail={thumbnail}>
-        <BookShelfChanger />
+        <ShelfChanger
+          currentShelf={shelf}
+          bookId={id}
+          onChangeShelf={this.props.onChangeShelf}
+        />
       </BookFactory>
     )
   }
