@@ -4,9 +4,18 @@ import BookShelf from './../components/BookShelf'
 import OpenSearch from './../components/OpenSearch'
 import Loading from './../components/Loading'
 
+import { ContextConsumer } from './../context'
+
+const SHELF_TYPES = {
+  currentlyReading: 'Currently Reading',
+  wantToRead: 'Want to Read',
+  read: 'Read',
+}
+
 class LibraryPage extends Component {
   filterBooksbyShelf(shelfName) {
     const { allBooks } = this.props
+
     return Object.keys(allBooks)
       .filter(id => allBooks[id].shelf === shelfName)
       .map(id => allBooks[id])
@@ -15,25 +24,15 @@ class LibraryPage extends Component {
   renderShelves = () => {
     const { appStatus } = this.props
 
-    console.log('appStatus', appStatus)
-
     return appStatus.value === 'success' ? (
       <div className="list-books-content">
-        <BookShelf
-          title="Currently Reading"
-          books={this.filterBooksbyShelf('currentlyReading')}
-          onChangeShelf={this.props.onChangeShelf}
-        />
-        <BookShelf
-          title="Want to Read"
-          books={this.filterBooksbyShelf('wantToRead')}
-          onChangeShelf={this.props.onChangeShelf}
-        />
-        <BookShelf
-          title="Read"
-          books={this.filterBooksbyShelf('read')}
-          onChangeShelf={this.props.onChangeShelf}
-        />
+        {Object.keys(SHELF_TYPES).map(key => (
+          <BookShelf
+            key={key}
+            title={SHELF_TYPES[key]}
+            books={this.filterBooksbyShelf(key)}
+          />
+        ))}
       </div>
     ) : (
       <Loading appStatus={appStatus} />
@@ -47,7 +46,7 @@ class LibraryPage extends Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
-          <h1>MyReads</h1>
+          <h1>{`MyReads`}</h1>
         </div>
         {this.renderShelves()}
         <OpenSearch />
@@ -56,4 +55,8 @@ class LibraryPage extends Component {
   }
 }
 
-export default LibraryPage
+export default props => (
+  <ContextConsumer>
+    {context => <LibraryPage {...props} {...context.state} />}
+  </ContextConsumer>
+)

@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
+import { ContextConsumer } from './../context'
+
 class ShelfChanger extends Component {
+  static defaultProps = { onChangeShelf: () => {} }
+
   state = {
     value: 'none',
   }
@@ -15,6 +19,7 @@ class ShelfChanger extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="book-shelf-changer">
         <select value={this.state.value} onChange={this.handleChange}>
@@ -31,4 +36,10 @@ class ShelfChanger extends Component {
   }
 }
 
-export default ShelfChanger
+export default props => (
+  <ContextConsumer>
+    {context => (
+      <ShelfChanger {...props} onChangeShelf={context.actions.onChangeShelf} />
+    )}
+  </ContextConsumer>
+)

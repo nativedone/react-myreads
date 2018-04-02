@@ -11,11 +11,7 @@ class Book extends Component {
 
     return (
       <BookFactory title={title} authors={authors} thumbnail={thumbnail}>
-        <ShelfChanger
-          currentShelf={shelf}
-          bookId={id}
-          onChangeShelf={this.props.onChangeShelf}
-        />
+        <ShelfChanger currentShelf={shelf} bookId={id} />
       </BookFactory>
     )
   }

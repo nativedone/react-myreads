@@ -7,7 +7,7 @@ class BookShelf extends Component {
   renderBooks = () => {
     return this.props.books.map(book => (
       <li key={book.id}>
-        <Book data={book} onChangeShelf={this.props.onChangeShelf} />
+        <Book data={book} />
       </li>
     ))
   }
