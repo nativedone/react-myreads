@@ -8,10 +8,10 @@ import NotFoundPage from './pages/NotFoundPage'
 
 import { ContextProvider } from './context'
 
-// TODO: Use the context API for passing onChangeShelf
 // TODO: Handle properly error trying to change self -> only show an auto dismissing message and
 // TODO: Think about a way of not re-render the whole app for just update one book position
 // TODO: Remove the search button on the app startup ou when updating a book
+// TODO: See /src/clients/shared/containers/Context/addContext.js
 
 class BooksApp extends React.Component {
   render() {

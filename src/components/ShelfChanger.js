@@ -38,8 +38,6 @@ class ShelfChanger extends Component {
 
 export default props => (
   <ContextConsumer>
-    {context => (
-      <ShelfChanger {...props} onChangeShelf={context.actions.onChangeShelf} />
-    )}
+    {({ contextActions }) => <ShelfChanger {...props} {...contextActions} />}
   </ContextConsumer>
 )

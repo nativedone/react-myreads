@@ -57,6 +57,6 @@ class LibraryPage extends Component {
 
 export default props => (
   <ContextConsumer>
-    {context => <LibraryPage {...props} {...context.state} />}
+    {({ contextState }) => <LibraryPage {...props} {...contextState} />}
   </ContextConsumer>
 )

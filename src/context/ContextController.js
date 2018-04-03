@@ -7,77 +7,61 @@ const { Consumer, Provider } = React.createContext()
 
 class ContextProvider extends Component {
   state = {
-    allBooks: {},
-    appStatus: {
-      value: 'loading', // or 'success' or 'error'
-      message: '',
+    contextState: {
+      allBooks: {},
+      appStatus: {
+        value: 'loading', // or 'success' or 'error'
+        message: '',
+      },
+    },
+    contextActions: {
+      onChangeShelf: (id, shelf) => this.onChangeShelf(id, shelf),
     },
   }
 
-  actions = { onChangeShelf: (id, shelf) => this.onChangeShelf(id, shelf) }
-
-  onChangeShelf = (id, shelf) => {
-    const { allBooks, appStatus } = this.state
-
+  changeState(books, statusValue, statusMessage = '') {
     this.setState({
-      appStatus: {
-        ...appStatus,
-        value: 'loading',
+      contextState: {
+        allBooks: { ...books } || {},
+        appStatus: {
+          value: statusValue,
+          message: statusMessage,
+        },
       },
     })
+  }
+
+  onChangeShelf = (id, shelf) => {
+    const { contextState: { allBooks, appStatus } } = this.state
+
+    this.changeState(allBooks, 'loading')
 
     BooksAPI.update({ id }, shelf)
       .then(res =>
-        this.setState({
-          allBooks: { ...allBooks, [id]: { ...allBooks[id], shelf } },
-          appStatus: {
-            ...appStatus,
-            value: 'success',
-          },
-        }),
+        this.changeState(
+          { ...allBooks, [id]: { ...allBooks[id], shelf } },
+          'success',
+        ),
       )
       .catch(rejection =>
-        this.setState({
-          appStatus: {
-            value: 'error',
-            message: rejection.toString(),
-          },
-        }),
+        this.changeState({ ...allBooks }, 'error', rejection.toString()),
       )
   }
 
   componentDidMount() {
     BooksAPI.getAll()
-      .then(allBooks =>
-        this.setState({
-          allBooks: mapArrayToObject(allBooks) || {},
-          appStatus: {
-            ...this.state.appStatus,
-            value: 'success',
-          },
-        }),
-      )
+      .then(allBooks => this.changeState(mapArrayToObject(allBooks), 'success'))
       .catch(rejection =>
-        this.setState({
-          appStatus: {
-            value: 'error',
-            message: rejection.toString(),
-          },
-        }),
+        this.changeState(
+          { ...this.state.contextState.allBooks },
+          'error',
+          rejection.toString(),
+        ),
       )
   }
 
   render() {
-    return (
-      <Provider
-        value={{
-          actions: { ...this.actions },
-          state: { ...this.state },
-        }}
-      >
-        {this.props.children}
-      </Provider>
-    )
+    return <Provider value={this.state}>{this.props.children}</Provider>
   }
 }
 
