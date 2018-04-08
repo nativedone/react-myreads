@@ -5,10 +5,9 @@ import './App.css'
 import { LibraryPage, SearchPage, NotFoundPage } from './pages'
 import { ContextProvider } from './context'
 
-// TODO: Handle properly error trying to change self -> only show an auto dismissing message and
+// TODO: Handle properly error trying to change self -> only show an auto dismissing message
 // TODO: Think about a way of not re-render the whole app for just update one book position
-// TODO: An updated README that describes the project and has instructions for installing and launching the project is included
-// TODO: in-book loading with shanging shelf operations
+// 'in-book loading' for shanging shelf operations
 
 class BooksApp extends React.Component {
   render() {
