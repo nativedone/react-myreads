@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
-import BookShelf from './../components/BookShelf'
-import OpenSearch from './../components/OpenSearch'
-import Loading from './../components/Loading'
-
+import { BookShelf, OpenSearch, Loading } from './../components'
 import { ContextConsumer } from './../context'
 
 const SHELF_TYPES = {
@@ -14,11 +11,11 @@ const SHELF_TYPES = {
 
 class LibraryPage extends Component {
   filterBooksbyShelf(shelfName) {
-    const { allBooks } = this.props
+    const { booksInTheLibrary: books } = this.props
 
-    return Object.keys(allBooks)
-      .filter(id => allBooks[id].shelf === shelfName)
-      .map(id => allBooks[id])
+    return Object.keys(books)
+      .filter(id => books[id].shelf === shelfName)
+      .map(id => books[id])
   }
 
   renderShelves = () => {
@@ -35,13 +32,13 @@ class LibraryPage extends Component {
         ))}
       </div>
     ) : (
-      <Loading appStatus={appStatus} />
+      <Loading status={appStatus} />
     )
   }
 
   render() {
     // TODO: remove console
-    console.log('this.props', this.props)
+    console.log('this.props at library page', this.props)
 
     return (
       <div className="list-books">

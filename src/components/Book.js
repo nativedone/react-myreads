@@ -5,13 +5,12 @@ import ShelfChanger from './ShelfChanger'
 
 class Book extends Component {
   render() {
-    const {
-      data: { title, authors, imageLinks: { thumbnail }, shelf, id },
-    } = this.props
+    const { title, authors, imageLinks } = this.props.book
+    const thumbnail = imageLinks ? imageLinks.thumbnail : undefined
 
     return (
       <BookFactory title={title} authors={authors} thumbnail={thumbnail}>
-        <ShelfChanger currentShelf={shelf} bookId={id} />
+        <ShelfChanger book={this.props.book} />
       </BookFactory>
     )
   }

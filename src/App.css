@@ -68,6 +68,8 @@ body, .app {
 
 /* search page */
 
+
+
 .search-books-bar {
   position: fixed;
   width: 100%;
@@ -101,6 +103,18 @@ body, .app {
   background-repeat: no-repeat;
   background-size: 28px;
   font-size: 0;
+}
+
+.search-books {
+  display: flex;
+  height: 100%;
+}
+
+.wrap-books-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 }
 
 .search-books-results {

@@ -3,9 +3,9 @@ import Spinner from 'react-spinner-material'
 
 import ShowError from './ShowError'
 
-const Loading = ({ appStatus }) => (
+const Loading = ({ status }) => (
   <div className="loading-wrapper">
-    {appStatus.value === 'loading' ? (
+    {status.value === 'loading' ? (
       <Spinner
         size={120}
         spinnerColor={'#F7BB41'}
@@ -13,7 +13,7 @@ const Loading = ({ appStatus }) => (
         visible={true}
       />
     ) : (
-      <ShowError message={appStatus.message} />
+      <ShowError message={status.message} />
     )}
   </div>
 )

@@ -8,7 +8,7 @@ const { Consumer, Provider } = React.createContext()
 class ContextProvider extends Component {
   state = {
     contextState: {
-      allBooks: {},
+      booksInTheLibrary: {},
       appStatus: {
         value: 'loading', // or 'success' or 'error'
         message: '',
@@ -22,7 +22,7 @@ class ContextProvider extends Component {
   changeState(books, statusValue, statusMessage = '') {
     this.setState({
       contextState: {
-        allBooks: { ...books } || {},
+        booksInTheLibrary: { ...books } || {},
         appStatus: {
           value: statusValue,
           message: statusMessage,
@@ -31,29 +31,36 @@ class ContextProvider extends Component {
     })
   }
 
-  onChangeShelf = (id, shelf) => {
-    const { contextState: { allBooks, appStatus } } = this.state
+  onChangeShelf = (book, shelf) => {
+    const { contextState: { booksInTheLibrary } } = this.state
 
-    this.changeState(allBooks, 'loading')
-
-    BooksAPI.update({ id }, shelf)
-      .then(res =>
+    this.changeState(booksInTheLibrary, 'loading')
+    // Avoid making another API call to get the book as we already have it
+    BooksAPI.update(book, shelf)
+      .then(() =>
         this.changeState(
-          { ...allBooks, [id]: { ...allBooks[id], shelf } },
+          { ...booksInTheLibrary, [book.id]: { ...book, shelf } },
           'success',
         ),
       )
       .catch(rejection =>
-        this.changeState({ ...allBooks }, 'error', rejection.toString()),
+        this.changeState(
+          { ...booksInTheLibrary },
+          'error',
+          rejection.toString(),
+        ),
       )
   }
 
   componentDidMount() {
+    console.log('componentDidMount')
     BooksAPI.getAll()
-      .then(allBooks => this.changeState(mapArrayToObject(allBooks), 'success'))
+      .then(booksInTheLibrary =>
+        this.changeState(mapArrayToObject(booksInTheLibrary), 'success'),
+      )
       .catch(rejection =>
         this.changeState(
-          { ...this.state.contextState.allBooks },
+          { ...this.state.contextState.booksInTheLibrary },
           'error',
           rejection.toString(),
         ),

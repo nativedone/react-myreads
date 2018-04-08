@@ -7,13 +7,13 @@ class BookShelf extends Component {
   renderBooks = () => {
     return this.props.books.map(book => (
       <li key={book.id}>
-        <Book data={book} />
+        <Book book={book} />
       </li>
     ))
   }
 
   render() {
-    console.log('books', this.props.books)
+    //console.log('books', this.props.books)
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.title}</h2>

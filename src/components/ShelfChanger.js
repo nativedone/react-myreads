@@ -10,16 +10,16 @@ class ShelfChanger extends Component {
   }
 
   componentDidMount() {
-    this.setState({ value: this.props.currentShelf })
+    this.setState({ value: this.props.book.shelf })
   }
 
   handleChange = event => {
     this.setState({ value: event.target.value })
-    this.props.onChangeShelf(this.props.bookId, event.target.value)
+    this.props.onChangeShelf(this.props.book, event.target.value)
   }
 
   render() {
-    console.log(this.props)
+    //console.log('this.props at ShelfChanger', this.props)
     return (
       <div className="book-shelf-changer">
         <select value={this.state.value} onChange={this.handleChange}>

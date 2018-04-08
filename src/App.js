@@ -2,16 +2,13 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import './App.css'
-import LibraryPage from './pages/LibraryPage'
-import SearchPage from './pages/SearchPage'
-import NotFoundPage from './pages/NotFoundPage'
-
+import { LibraryPage, SearchPage, NotFoundPage } from './pages'
 import { ContextProvider } from './context'
 
 // TODO: Handle properly error trying to change self -> only show an auto dismissing message and
 // TODO: Think about a way of not re-render the whole app for just update one book position
-// TODO: Remove the search button on the app startup ou when updating a book
-// TODO: See /src/clients/shared/containers/Context/addContext.js
+// TODO: An updated README that describes the project and has instructions for installing and launching the project is included
+// TODO: in-book loading with shanging shelf operations
 
 class BooksApp extends React.Component {
   render() {
