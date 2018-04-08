@@ -73,6 +73,11 @@ class SearchPage extends Component {
 
   renderResults = () => {
     const { foundBooks, query, queryStatus } = this.state
+    const { appStatus } = this.props
+
+    if (appStatus.value !== 'success') {
+      return <Loading status={appStatus} />
+    }
 
     if (queryStatus.value === 'reset' || query === '') {
       return (
