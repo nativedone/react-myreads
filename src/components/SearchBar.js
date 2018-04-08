@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-/*
-    NOTES: You can find these search terms here:
-    https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-*/
-
 class SearchBar extends Component {
   handleChange = event => {
-    //console.log(event.target.value)
-    /// this.setState({ query: event.target.value })
     this.props.handleChange(event.target.value)
   }
 

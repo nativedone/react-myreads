@@ -53,7 +53,6 @@ class ContextProvider extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
     BooksAPI.getAll()
       .then(booksInTheLibrary =>
         this.changeState(mapArrayToObject(booksInTheLibrary), 'success'),

@@ -37,9 +37,6 @@ class LibraryPage extends Component {
   }
 
   render() {
-    // TODO: remove console
-    console.log('this.props at library page', this.props)
-
     return (
       <div className="list-books">
         <div className="list-books-title">

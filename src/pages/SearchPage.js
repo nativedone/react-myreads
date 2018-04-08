@@ -20,7 +20,6 @@ class SearchPage extends Component {
   }
 
   changeState(books, statusValue, statusMessage = '') {
-    console.log(books)
     this.setState({
       foundBooks: { ...books } || {},
       queryStatus: {
@@ -31,7 +30,6 @@ class SearchPage extends Component {
   }
 
   handleChange = query => {
-    console.log('query on search page', query)
     this.setState({ query })
 
     // Clear state and finish the query
@@ -62,7 +60,6 @@ class SearchPage extends Component {
     let booksWithShelf = { ...this.state.foundBooks }
 
     Object.keys(booksWithShelf).map(key => {
-      console.log(booksInTheLibrary)
       booksWithShelf[key].shelf = booksInTheLibrary[key]
         ? booksInTheLibrary[key].shelf
         : undefined
