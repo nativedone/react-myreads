@@ -59,11 +59,12 @@ class SearchPage extends Component {
 
     let booksWithShelf = { ...this.state.foundBooks }
 
-    Object.keys(booksWithShelf).map(key => {
-      booksWithShelf[key].shelf = booksInTheLibrary[key]
-        ? booksInTheLibrary[key].shelf
-        : undefined
-    })
+    Object.keys(booksWithShelf).map(
+      key =>
+        (booksWithShelf[key].shelf = booksInTheLibrary[key]
+          ? booksInTheLibrary[key].shelf
+          : undefined),
+    )
 
     return booksWithShelf
   }
